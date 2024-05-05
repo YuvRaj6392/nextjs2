@@ -4,6 +4,7 @@
 import axios from 'axios';
 import React, { useState, ChangeEvent } from 'react';
 import { useRouter } from 'next/navigation';
+import { signup } from '@/app/actions/user';
 
 export default function Signup() {
   const [username, setUsername] = useState<string>("");
@@ -20,12 +21,14 @@ export default function Signup() {
 
 
   const handleSubmit = async () => {
-   const response = await axios.post("http://localhost:3000/api/user", {
-    username,
-    password
-});
-
-  router.push('/')
+   const response = await signup(username,password);
+    console.log(response)
+  if(response){
+    router.push('/')
+  }else{
+    alert('Error signing up')
+  }
+  
 
   };
 

@@ -32,7 +32,7 @@ export async function GET(){
  try{
 
   const user=await client.user.findUnique({where:{
-   id:3
+   id:1
   }});
 
  return NextResponse.json({
